@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docsify-deployment-helm
+  namespace: helm-docsify
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: docsify
+  template:
+    metadata:
+      labels:
+        app: docsify
+    spec:
+      containers:
+      - name: docsify
+        image: pwaawp/docsify
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: "/docs"
+          name: task-pv-storage
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: pvcdocsify-helm

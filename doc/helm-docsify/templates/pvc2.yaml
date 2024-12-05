@@ -1,0 +1,13 @@
+# it work 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvcdocsify-helm
+  namespace: helm-docsify
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

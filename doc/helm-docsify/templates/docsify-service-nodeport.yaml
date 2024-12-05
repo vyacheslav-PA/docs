@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-docsify-nodeport-helm
+  namespace: helm-docsify
+spec:
+  type: NodePort
+  selector:
+    app: docsify
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+    nodePort: 30080

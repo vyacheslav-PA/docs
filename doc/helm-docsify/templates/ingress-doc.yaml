@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docsify-ingress-helm
+  namespace: helm-docsify
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: helm.docsi.pwaawp
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-docsify-nodeport-helmsudo apt-get install python3.6
+            port:
+              number: 3000
+         
